@@ -76,4 +76,7 @@ s = df.sort_values(by='Rating', ascending=[False])
 s = s[['Nickname', '# of mentions', '# of followers', 'Sentiment', 'Rating', 'Location']]
 print (s.head(n =20))
 
+filename = 'results.csv'
+s.to_csv(filename, index=True, encoding='utf-8')
+
 
