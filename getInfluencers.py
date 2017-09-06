@@ -73,7 +73,8 @@ s = s[['Nickname', '# of mentions', '# of followers', 'Sentiment', 'Rating']]
 print (s.head(n =20))
 
 
-# In[ ]:
+filename = 'results.csv'
+s.to_csv(filename, index=True, encoding='utf-8')
 
 
 
