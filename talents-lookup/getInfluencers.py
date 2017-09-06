@@ -38,21 +38,25 @@ def get_tweet_sentiment(tweet):
 userlist = []
 f = {}
 tw = {}
+l = {}
 for each in d:
     mentions = []
     tweet = each['text']
 #     time.append(each['created_at'])
     screen_name = each['user']['screen_name']
     followers = each['user']['followers_count']
+    location = each['user']['location']
     sentiment = get_tweet_sentiment(each['text'])
     mentions.append(screen_name)
     mentions.append(followers)
     mentions.append(sentiment)
+#     mentions.append(location)
 #     mentions.append(tweet)
 #     statuses_count = each['user']['statuses_count']
 #     friends = each['user']['friends_count']  
     userlist.append(mentions)
     f[screen_name] = followers
+    l[screen_name] = location
 
 #     if screen_name in tw.keys():
 #         tw[screen_name].append(tweet)
@@ -63,17 +67,13 @@ pivot = collections.defaultdict(list)
 
 for item in userlist:
     pivot[item[0]].append(item[2])
-l = [{'Nickname':k, 'Sentiment':sum(values)/len(values), '# of mentions':len(values), '# of followers': f[k], 'Rating': sum(values)/len(values) + len(values) + f[k]/100000} for k, values in pivot.items()]
+l = [{'Nickname':k, 'Sentiment':sum(values)/len(values), '# of mentions':len(values), '# of followers': f[k], 'Rating': sum(values)/len(values) + len(values) + f[k]/100000, 'Location': l[k]} for k, values in pivot.items()]
 # with the text of tweets
 # l = [{'nickname':k, 'sentiment':sum(values)/len(values), 'mentions':len(values), 'followers': f[k], 'rating': sum(values)/len(values) + len(values) + f[k]/100000, 'tweets': ' '.join(el for el in tw[k])} for k, values in pivot.items()]
 df = pd.DataFrame(l)
 pd.options.display.max_colwidth = 10000
 s = df.sort_values(by='Rating', ascending=[False]) 
-s = s[['Nickname', '# of mentions', '# of followers', 'Sentiment', 'Rating']]
+s = s[['Nickname', '# of mentions', '# of followers', 'Sentiment', 'Rating', 'Location']]
 print (s.head(n =20))
-
-
-# In[ ]:
-
 
 
