@@ -59,8 +59,6 @@ while tweetCount < maxTweets:
         print("some error : " + str(e))
         break
 
-print (len(all_tweets))
-print(all_tweets[0])
 
 with open('tweetsN.json', 'w') as f:
     f.write('[' + '\n')
