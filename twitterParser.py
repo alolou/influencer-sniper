@@ -1,7 +1,7 @@
 import tweepy
 import sys
 import jsonpickle
-import os, subprocess
+import os
 
 API_KEY    = 'v2sK8SKbCTzrPhUkxYKEB8luX'
 API_SECRET = '2WiEZ5ExP4KFLzUmPxlKifEyPiouISPO5sbqyEddQEHTd8JG8z'
@@ -59,8 +59,6 @@ while tweetCount < maxTweets:
         print("some error : " + str(e))
         break
 
-print (len(all_tweets))
-print(all_tweets[0])
 
 with open('tweetsN.json', 'w') as f:
     f.write('[' + '\n')
