@@ -15,10 +15,9 @@ if (not api):
     print ("Can't Authenticate")
     sys.exit(-1)
 
-searchQuery = '@jet -jetblue OR #shoppurple OR #jetcom OR #purplebox'
+searchQuery = '(#fsharp OR #eventdriven OR #akka OR #spark OR #machinelearning OR #ML ) AND (#jobs OR #hiring)'
 maxTweets = 20000
 tweetsPerQry = 100
-fName = 'tweets.json'
 sinceId = None
 max_id = -1
 i = 0
@@ -62,7 +61,7 @@ while tweetCount < maxTweets:
 print (len(all_tweets))
 print(all_tweets[0])
 
-with open('tweetsN.json', 'w') as f:
+with open('tweets.json', 'w') as f:
     f.write('[' + '\n')
     f.write(",\n".join(all_tweets))
     f.write(']')
