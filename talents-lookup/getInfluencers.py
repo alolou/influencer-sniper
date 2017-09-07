@@ -9,7 +9,7 @@ import collections
 from textblob import TextBlob
 from operator import itemgetter
 
-with open('tweetsN.json') as json_data:
+with open('tweets.json') as json_data:
     d = json.load(json_data)
 
 def clean_tweet(tweet):
