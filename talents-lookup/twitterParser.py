@@ -68,4 +68,4 @@ with open('tweets.json', 'w') as f:
     f.close()
     
 
-print ("Downloaded {0} tweets, Saved to {1}".format(tweetCount, fName))
+#print ("Downloaded {0} tweets, Saved to {1}".format(tweetCount, fName))
